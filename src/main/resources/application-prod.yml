@@ -1,0 +1,20 @@
+# Prod profile — FeignClient is always used; no client selection needed
+
+github:
+  retry:
+    # Number of total attempts (1 initial + n-1 retries)
+    max-attempts: 3
+    # Initial retry interval in milliseconds (doubles up to max-period on each attempt)
+    period: 100
+    # Maximum retry interval cap in milliseconds
+    max-period: 1000
+
+# Resilience4j rate limiter — mirrors GitHub's unauthenticated API limit.
+# timeout-duration: 0 means fail fast (throw immediately) instead of queuing callers.
+resilience4j:
+  ratelimiter:
+    instances:
+      github:
+        limit-for-period: 60
+        limit-refresh-period: 1h
+        timeout-duration: 0

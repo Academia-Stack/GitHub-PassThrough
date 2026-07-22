@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: github-api-request
+  profiles:
+    active: ${runtime_env}
+
+github:
+  base-url: https://api.github.com

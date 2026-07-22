@@ -1,0 +1,11 @@
+# Dev profile — switch 'github.client' to change the IGitHubService implementation
+# Allowed values: restclient | httpclient
+github:
+  client: ${client}
+
+# Token bucket rate limiter for GitHub API calls.
+# GitHub allows 60 unauthenticated requests per hour.
+rate-limiter:
+  capacity: 60
+  refill-tokens: 30
+  refill-interval-seconds: 3600
